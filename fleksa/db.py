@@ -3,8 +3,8 @@ from flask.cli import with_appcontext
 from .extensions import db
 from .models import User, Post
 
-@click.command('init-db')
+@click.command(name='create_tables')
 @with_appcontext
-def init_db_command():
+def create_tables():
     db.create_all()
     click.echo('Initialized the database.')
