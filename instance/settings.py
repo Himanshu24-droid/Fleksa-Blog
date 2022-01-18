@@ -1,8 +1,8 @@
-#import os
+import os
 
-SQLALCHEMY_DATABASE_URI = 'sqlite:///fleksa.sqlite'#os.environ.get('SQLALCHEMY_DATABASE_URI')
-SECRET_KEY = 'himanshulanjewar'#os.environ.get('SECRET_KEY')
+SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
+SECRET_KEY = os.environ.get('SECRET_KEY')
 SQLALCHEMY_TRACK_MODIFICATIONS = False
-UPLOAD_FOLDER = 'fleksa/static/uploads'
-MAX_CONTENT_LENGTH = 10 * 1024 * 1024
-UPLOAD_EXTENSIONS = ['.jpg','.png','.gif','.jpeg']
+UPLOAD_FOLDER = os.environ.get('UPLOAD_FOLDER')
+MAX_CONTENT_LENGTH = os.environ.get('MAX_CONTENT_LENGTH')
+UPLOAD_EXTENSIONS = os.environ.get('UPLOAD_EXTENSIONS')
