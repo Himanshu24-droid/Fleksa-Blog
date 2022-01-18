@@ -1,1 +1,1 @@
-web: waitress-serve --port=$PORT --call wsgi:app
+web: waitress-serve --port=$PORT --call fleksa:create_app
