@@ -3,7 +3,7 @@ from flask import Flask
 from flask_migrate import Migrate
 from .extensions import db,login_manager
 from .models import User, Post
-from .db import create_tables
+
 
 def create_app(config_file='settings.py'):
     app = Flask(__name__, instance_relative_config=True)
@@ -12,6 +12,7 @@ def create_app(config_file='settings.py'):
     
     migrate = Migrate(app,db)
 
+    from .extensions import db
     db.init_app(app)
 
     login_manager.init_app(app)
@@ -28,5 +29,8 @@ def create_app(config_file='settings.py'):
     from . import blog
     app.register_blueprint(blog.bp)
     app.add_url_rule('/', endpoint='index')
+
+    from .db import create_tables
+    app.cli.add_command(create_tables)
 
     return app

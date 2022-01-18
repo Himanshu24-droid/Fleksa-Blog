@@ -9,5 +9,3 @@ def create_tables():
     db.create_all()
     click.echo('Initialized the database.')
 
-def init_app(app):
-    app.cli.add_command(create_tables)
