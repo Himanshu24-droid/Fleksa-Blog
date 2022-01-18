@@ -4,3 +4,4 @@ fleksa/__pycache__/
 venv/
 .env
 fleksa.sqlite
+migrations/
