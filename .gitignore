@@ -1,0 +1,6 @@
+.idea/
+instance/
+fleksa/__pycache__/
+venv/
+.env
+fleksa.sqlite

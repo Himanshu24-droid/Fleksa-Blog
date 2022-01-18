@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Posts{% endblock %}</h1>
+  {% if current_user.is_authenticated %}
+    <a class="action" href="{{ url_for('blog.create') }}">Add Post</a>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+  {% for post in posts %}
+    <article class="post">
+      <header>
+        <div>
+          <h1>{{ post.title }}</h1>
+          <div class="about">by {{ post.author.username }} on {{ post.created.strftime('%Y-%m-%d') }}</div>
+        </div>
+        {% if current_user == post.author %}
+          <a class="action" href="{{url_for('blog.update', id=post.id)}}">Edit</a>
+        {% endif %}
+      </header>
+      <p class="body">{{ post.body }}</p>
+    </article>
+    <img src="{{ url_for('static', filename='uploads/' + post.filename) }}" style="width: 720px;">
+      {% if not loop.last %}
+        <hr>
+      {% endif %}
+  {% endfor %}
+{% endblock %}
