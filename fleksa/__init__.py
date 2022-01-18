@@ -29,6 +29,4 @@ def create_app(config_file='settings.py'):
     app.register_blueprint(blog.bp)
     app.add_url_rule('/', endpoint='index')
 
-    app.cli.add_command(create_tables)
-
     return app
